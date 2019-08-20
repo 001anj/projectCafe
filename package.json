@@ -9,7 +9,7 @@
     "testcafe-reporter-allure": "^1.0.5"
   },
   "scripts": {
-    "test": "testcafe chrome:headless tests/**/* -r --reporter allure"
+    "test": "testcafe chrome:headless tests/**/* -e"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
