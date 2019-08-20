@@ -1,0 +1,16 @@
+{
+  "name": "projectcafe",
+  "version": "1.0.0",
+  "description": "E2E test cases",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "testcafe": "^1.4.1",
+    "testcafe-reporter-allure": "^1.0.5"
+  },
+  "scripts": {
+    "test": "testcafe chrome tests --reporter allure"
+  },
+  "author": "Anjo Mathew",
+  "license": "ISC"
+}
