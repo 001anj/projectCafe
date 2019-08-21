@@ -6,10 +6,11 @@
   "dependencies": {},
   "devDependencies": {
     "testcafe": "^1.4.1",
-    "testcafe-reporter-allure": "^1.0.5"
+    "testcafe-reporter-allure": "^1.0.5",
+    "testcafe-reporter-xunit": "^2.1.0"
   },
   "scripts": {
-    "test": "testcafe chrome tests/checkoutTest.js -e"
+    "test": "testcafe chrome:headless tests/**/* -e xunit:/tmp/test-results/res.xml"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
