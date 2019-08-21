@@ -10,7 +10,7 @@
     "testcafe-reporter-xunit": "^2.1.0"
   },
   "scripts": {
-    "test": "testcafe chrome:headless Tests/**/* -e xunit:/tmp/test-results/res.xml"
+    "test": "testcafe chrome Tests/**/* -e xunit:/tmp/test-results/res.xml"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
