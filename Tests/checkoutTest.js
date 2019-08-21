@@ -4,10 +4,6 @@ import { ClientFunction, t } from 'testcafe';
 fixture('Test case to check search functionality of a product')
 .page('https://www.bergfreunde.eu');
 
-test('Should check whether searched brand is actually found or not', async t => {
-// closing the welcome alert
-    await t.click('[class="greeting-cancel"][title="Ich komme gar nicht aus Deutschland"]');
-
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click('[data-codecept="searchGo"][title="Start your search!"]'); 
     await t.typeText('input[itemprop="query-input"]', "Lundhags");
