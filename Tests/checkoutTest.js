@@ -30,7 +30,7 @@ test('Should check whether searched brand is actually found or not', async t => 
 
 // Put the required maximum weight in filter
     await t.click('[class="arrow right"][data-codecept="Weight-icon"]');
-    await t.typeText('input[name="maxVal"]', "420 gr", {replace: true});
+    await t.typeText('input[name="maxVal"]', "800 gr", {replace: true});
     await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
   
 // Put the required maximum weight in filter
@@ -38,14 +38,14 @@ test('Should check whether searched brand is actually found or not', async t => 
     await t.typeText('input[name="maxVal"]', "100 €", {replace: true});
     await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
 
-// Select the required rating for the searched product
-    await t.click('[class="arrow right"][data-codecept="Rating-icon"]');
-    await t.click('[class="clearfix unselected"][data-filter-value="5"]');
-    await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
-
 // Selecting the item after confirming all the required filters    
     await t.click(Selector('.product-link').withText('Skirt'))
+
+// Check whether item detail is displayed or not
     await t.expect('[id="details"]').ok();
+
+// Check atleast one review is visible for the selected item
+    await t.expect(Selector('[itemprop="review"]').visible).ok();
 
 //Confirming the quantity of item required and adding it to cart
     await t.typeText('input[name="am"]', "2", {replace: true});
