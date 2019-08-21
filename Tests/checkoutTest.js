@@ -10,10 +10,10 @@ test('Should check whether searched brand is actually found or not', async t => 
 
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click('[data-codecept="searchGo"][title="Start your search!"]'); 
-	await t.typeText('input[itemprop="query-input"]', "Lundhags");
-	await t.click('[class="suggestTextQueryTyped"][data-codecept="suggestHighlightedBrand"]');
-	// check whether entered brand is actually searched or not
-	await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
+    await t.typeText('input[itemprop="query-input"]', "Lundhags");
+    await t.click('[class="suggestTextQueryTyped"][data-codecept="suggestHighlightedBrand"]');
+// check whether entered brand is actually searched or not
+    await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
 
 // Select the required size in filter
     await t.click('[class="arrow right"][data-codecept="BaseSize-icon"]');
