@@ -33,7 +33,7 @@ test('Should check whether searched brand is actually found or not', async t => 
     await t.typeText('input[name="maxVal"]', "800 gr", {replace: true});
     await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
   
-// Put the required maximum weight in filter
+// Put the required maximum price in filter
     await t.click('[class="arrow right"][data-codecept="Price-icon"]');
     await t.typeText('input[name="maxVal"]', "100 €", {replace: true});
     await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
