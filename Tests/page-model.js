@@ -3,8 +3,6 @@ import { Selector } from 'testcafe';
 export default class Page {
     constructor () {
 
-   // Selectors for search process
-    	this.welcomePage = Selector('[class="greeting-cancel"][title="Ich komme gar nicht aus Deutschland"]');
     	
     	this.search = Selector('[data-codecept="searchGo"][title="Start your search!"]');
     	this.searchBrand = Selector('input[itemprop="query-input"]');
