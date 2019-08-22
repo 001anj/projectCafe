@@ -4,7 +4,7 @@ export default class Page {
     constructor () {
   
     	
-    	this.search = Selector('[data-codecept="searchField"][title="Start your search!"]');
+    	this.search = Selector('[data-codecept="searchGo"][title="Start your search!"]');
     	this.searchBrand = Selector('input[itemprop="query-input"]');
     	this.searchButton = Selector('[class="suggestTextQueryTyped"][data-codecept="suggestHighlightedBrand"]');
         
