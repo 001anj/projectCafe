@@ -3,18 +3,15 @@
   "version": "1.0.0",
   "description": "E2E test cases",
   "main": "index.js",
+  "directories": {
+    "test": "Tests"
+  },
   "dependencies": {
-    "testcafe": "^1.4.1",
-    "testcafe-reporter-allure": "^1.0.5",
-    "testcafe-reporter-xunit": "^2.1.0"
+    "testcafe": "^1.4.1"
   },
-  "devDependencies": {
-    "testcafe": "^1.4.1",
-    "testcafe-reporter-allure": "^1.0.5",
-    "testcafe-reporter-xunit": "^2.1.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "test": "testcafe chrome Tests/**/* -e xunit:/tmp/test-results/res.xml"
+    "test": "testcafe chrome Tests/**/* -e"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
