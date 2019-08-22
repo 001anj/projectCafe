@@ -1,70 +1,77 @@
 import { Selector } from 'testcafe';
 import { ClientFunction, t } from 'testcafe';
+import Page from './page-model';
+
+const page = new Page();
 
 fixture('Test case to check search functionality of a product')
 .page('https://www.bergfreunde.eu');
 
 test('Should check whether searched brand is actually found or not', async t => {
 // closing the welcome alert
-    await t.click('[class="greeting-cancel"][title="Ich komme gar nicht aus Deutschland"]');
+    await t.click(page.welcomePage);
 
 // Selecting the search field and searching for specific brand "Lundhags"
-    await t.click('[data-codecept="searchGo"][title="Start your search!"]'); 
-    await t.typeText('input[itemprop="query-input"]', "Lundhags");
-    await t.click('[class="suggestTextQueryTyped"][data-codecept="suggestHighlightedBrand"]');
+    await t.click(page.search); 
+    await t.typeText(page.searchBrand, "Lundhags");
+    await t.click(page.searchButton);
 // check whether entered brand is actually searched or not
     await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
 
 // Select the required size in filter
-    await t.click('[class="arrow right"][data-codecept="BaseSize-icon"]');
-    await t.click('[class="unselected"][data-filter-value="xs"]');
-    await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
-    // check whether page displays the product from selected size
-    await t.expect(await Selector('h1').innerText).eql('LUNDHAGS IN SIZE XS ');
+    await t.click(page.selectSizeOption);
+    await t.click(page.selectSize);
+    await t.click(page.submitSize);
+// check whether page displays the product from selected size
+    await t.expect(Selector('h1').innerText).eql('LUNDHAGS IN SIZE XS ');
 
 // Select the required color in filter
-    await t.click('[class="arrow right"][data-codecept="BaseColor-icon"]');
-    await t.click('[class="unselected"][data-filter-value="red"]');
-    await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+    await t.click(page.selectColorOption);
+    await t.click(page.selectColor);
+    await t.click(page.submitColor);
+// check whether color option is selected or not
     await t.expect('[class="selected"][data-filter-value="red"]').ok();
 
 // Put the required maximum weight in filter
-    await t.click('[class="arrow right"][data-codecept="Weight-icon"]');
-    await t.typeText('input[name="maxVal"]', "800 gr", {replace: true});
-    await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+    await t.click(page.selectWeightOption);
+    await t.typeText(page.weightInput, "400 gr", {replace: true});
+    await t.click(page.submitWeight);
   
 // Put the required maximum price in filter
-    await t.click('[class="arrow right"][data-codecept="Price-icon"]');
-    await t.typeText('input[name="maxVal"]', "100 €", {replace: true});
-    await t.click('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+    await t.click(page.selectPriceOption);
+    await t.typeText(page.priceInput, "200 €", {replace: true});
+    await t.click(page.submitPrice);
 
 // Selecting the item after confirming all the required filters    
-    await t.click(Selector('.product-link').withText('Skirt'))
+    await t.click(page.selectItem);
 
-// Check whether item detail is displayed or not
+// Check whether detail page of selected item is displayed or not
     await t.expect('[id="details"]').ok();
 
 // Check atleast one review is visible for the selected item
     await t.expect(Selector('[itemprop="review"]').visible).ok();
 
 //Confirming the quantity of item required and adding it to cart
-    await t.typeText('input[name="am"]', "2", {replace: true});
-    await t.click(Selector('[data-codecept="toBasket"][type="submit"]'));
+    await t.typeText(page.quantityInput, "2", {replace: true});
+    await t.click(page.addToCart);
+// Check whether popup for information of item added to cart is displayed
     await t.expect(Selector('[class="center-text-popup highlight-1"]').textContent).eql('You have added the following product to the cart:');
 
 // Confirming the details of purchased item and proceeding to cart
-    await t.click(Selector('[data-codecept="toBasketPopup"][type="submit"]'));
+    await t.click(page.goToCart);
 
 // Trying the redeem code 
-    await t.typeText('input[name="voucherNr"]', "NotAvailable");
-    await t.click(Selector('[data-codecept="submitVoucher"][type="submit"]'));
+    await t.typeText(page.voucherInput, "NotAvailable");
+    await t.click(page.submitVoucher);
 
-// Error is displayed if redeem code is not the correct one
+// Check whether error is displayed if redeem code is not the correct one
     await t.expect('[class="voucher-errors clearfix"]').ok('true');
-    await t.click('[class="close close-reveal-modal"]');
+
+// Closing the error window
+    await t.click(page.closeErrorPopup);
 
 // Confirming the purchase and proceed towards checkout
-    await t.click('button[class="a-button a-button--green a-button--large right"][type="submit"]');
+    await t.click(page.goToCheckout);
 
 // User is redirected to login page or create a new account page before moving to payment section
     const getLocation = ClientFunction(() => document.location.href);
