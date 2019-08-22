@@ -37,7 +37,9 @@ export default class Page {
         this.closeErrorPopup = Selector('[class="close close-reveal-modal"]');
 
         this.goToCheckout = Selector('button[class="a-button a-button--green a-button--large right"][type="submit"]')
+        this.loginForm = Selector(Selector('[class="a-button a-button--green right a-button--large user-button"][data-codecept="registerButton"]').visible)   
     }
+
 
 
 }
