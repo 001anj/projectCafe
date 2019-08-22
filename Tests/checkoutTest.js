@@ -8,9 +8,6 @@ fixture('Test case to check search functionality of a product')
 .page('https://www.bergfreunde.eu');
 
 test('Should check whether searched brand is actually found or not', async t => {
-// closing the welcome alert
-    await t.wait(5000);
-    await t.click(page.welcomePage);
 
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click(page.search); 
