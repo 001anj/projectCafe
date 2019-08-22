@@ -7,11 +7,12 @@
     "test": "Tests"
   },
   "dependencies": {
-    "testcafe": "^1.4.1"
+    "testcafe": "^1.4.1",
+    "testcafe-reporter-junit": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "testcafe chrome Tests/**/* -e"
+    "test": "testcafe chrome:headless Tests/**/* -e xunit:/tmp/test-results/res.xml"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
