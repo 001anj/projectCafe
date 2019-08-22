@@ -7,7 +7,7 @@ const page = new Page();
 fixture('E2E test case for search, select, purchase and checkout')
 .page('https://www.bergfreunde.eu');
 
-test('Should check whether searched brand is actually found or not', async t => {
+test('Should check the checkout process for random item', async t => {
 
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click(page.search); 
@@ -74,6 +74,12 @@ test('Should check whether searched brand is actually found or not', async t => 
 // User is redirected to login page or create a new account page before moving to payment section
     const getLocation = ClientFunction(() => document.location.href);
     await t.expect(getLocation()).contains('https://www.bergfreunde.eu/customer/');
+
+// Check whether login form is visible in page    
+    await t.expect(Selector('[class="small-12 columns content"]').visible).ok();
+
+// check whether create an account button is visible 
+    await t.expect(Selector('[class="a-button a-button--green right a-button--large user-button"][data-codecept="registerButton"]').visible).ok();
 
     });
     
