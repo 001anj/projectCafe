@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "testcafe chrome:headless Tests/**/* -e xunit:/tmp/test-results/res.xml"
+    "test": "testcafe chrome:headless Tests/**/* -e xunit:/test-results/results.xml"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
