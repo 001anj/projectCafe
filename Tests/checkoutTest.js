@@ -4,7 +4,7 @@ import Page from './page-model';
 
 const page = new Page();
 
-fixture('Test case to check search functionality of a product')
+fixture('E2E test case for search, select, purchase and checkout')
 .page('https://www.bergfreunde.eu');
 
 test('Should check whether searched brand is actually found or not', async t => {
