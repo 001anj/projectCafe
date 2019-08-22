@@ -9,7 +9,7 @@ fixture('Test case to check search functionality of a product')
 
 test('Should check whether searched brand is actually found or not', async t => {
 // closing the welcome alert
-    timeout: 5000;
+    await t.maximizeWindow()
     await t.click(page.welcomePage);
 
 // Selecting the search field and searching for specific brand "Lundhags"
