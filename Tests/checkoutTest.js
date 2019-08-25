@@ -14,7 +14,7 @@ test('Should check the checkout process for random selected item', async t => {
     await t.typeText(page.searchBrand, "Lundhags");
     await t.click(page.searchButton);
 // check whether entered brand is actually searched or not
-    await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
+    await t.expect(Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
     
 // Select the required rating in filter
     await t.click(page.selectRatingOption);
