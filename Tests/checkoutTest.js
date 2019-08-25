@@ -16,6 +16,23 @@ test('Should check the checkout process for random selected item', async t => {
 // check whether entered brand is actually searched or not
     await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
     
+// Select the required rating in filter
+    await t.click(page.selectRatingOption);
+    await t.click(page.selectRating);
+    await t.click(page.submitRating);
+// check whether rating is selected or not
+    await t.expect('[class="clearfix selected"][data-filter-value="5"]').ok();
+
+// Put the required maximum weight in filter
+    await t.click(page.selectWeightOption);
+    await t.typeText(page.weightInput, "1000 gr", {replace: true});
+    await t.click(page.submitWeight);
+  
+// Put the required maximum price in filter
+    await t.click(page.selectPriceOption);
+    await t.typeText(page.priceInput, "600 €", {replace: true});
+    await t.click(page.submitPrice);
+
 // Select the required size in filter
     await t.click(page.selectSizeOption);
     await t.click(page.selectSize);
@@ -30,21 +47,13 @@ test('Should check the checkout process for random selected item', async t => {
 // check whether color option is selected or not
     await t.expect('[class="selected"][data-filter-value="red"]').ok();
 
-// Put the required maximum weight in filter
-    await t.click(page.selectWeightOption);
-    await t.typeText(page.weightInput, "400 gr", {replace: true});
-    await t.click(page.submitWeight);
-  
-// Put the required maximum price in filter
-    await t.click(page.selectPriceOption);
-    await t.typeText(page.priceInput, "200 €", {replace: true});
-    await t.click(page.submitPrice);
-
 // Selecting the item after confirming all the required filters    
     await t.click(page.selectItem);
 
 // Check whether detail page of selected item is displayed or not
     await t.expect('[id="details"]').ok();
+// Check whether return policy is mentioned for selected item
+    await t.expect(Selector('html').textContent).contains('30 days returns policy');
 
 // Check atleast one review is visible for the selected item
     await t.expect(Selector('[itemprop="review"]').visible).ok();
