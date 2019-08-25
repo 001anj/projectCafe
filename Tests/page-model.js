@@ -7,15 +7,11 @@ export default class Page {
     	this.search = Selector('[data-codecept="searchGo"][title="Start your search!"]');
     	this.searchBrand = Selector('input[itemprop="query-input"]');
     	this.searchButton = Selector('[class="suggestTextQueryTyped"][data-codecept="suggestHighlightedBrand"]');
-        
-        this.selectSizeOption = Selector('[class="arrow right"][data-codecept="BaseSize-icon"]');
-        this.selectSize = Selector('[class="unselected"][data-filter-value="xs"]');
-        this.submitSize = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
-        
-        this.selectColorOption = Selector('[class="arrow right"][data-codecept="BaseColor-icon"]');
-        this.selectColor = Selector('[class="unselected"][data-filter-value="red"]');
-        this.submitColor = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
-        
+
+        this.selectRatingOption = Selector('[class="arrow right"][data-codecept="Rating-icon"]');
+        this.selectRating = Selector('[class="clearfix unselected"][data-filter-value="5"]');
+        this.submitRating = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+
         this.selectWeightOption = Selector('[class="arrow right"][data-codecept="Weight-icon"]');
         this.weightInput = Selector('input[name="maxVal"]');
         this.submitWeight = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
@@ -24,6 +20,14 @@ export default class Page {
         this.priceInput = Selector('input[name="maxVal"]');
         this.submitPrice = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
         
+        this.selectSizeOption = Selector('[class="arrow right"][data-codecept="BaseSize-icon"]');
+        this.selectSize = Selector('[class="unselected"][data-filter-value="xs"]');
+        this.submitSize = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+        
+        this.selectColorOption = Selector('[class="arrow right"][data-codecept="BaseColor-icon"]');
+        this.selectColor = Selector('[class="unselected"][data-filter-value="red"]');
+        this.submitColor = Selector('button[class="a-button a-button--green left button-box__filter"][type="submit"]');
+
         this.selectItem = Selector('.product-link').withText('Tiven Skirt - Skirt');
 
         this.quantityInput = Selector('input[name="am"]'); 
