@@ -4,10 +4,10 @@ import Page from './page-model';
 
 const page = new Page();
 
-fixture('E2E test case for search, select, purchase and checkout')
+fixture('E2E test case for checkout process')
 .page('https://www.bergfreunde.eu');
 
-test('Should check the checkout process for random item', async t => {
+test('Should check the checkout process for random selected item', async t => {
 
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click(page.search); 
@@ -15,7 +15,7 @@ test('Should check the checkout process for random item', async t => {
     await t.click(page.searchButton);
 // check whether entered brand is actually searched or not
     await t.expect(await Selector('h1').innerText).eql('LUNDHAGS SHOES, CLOTHING AND BACKPACKS');
-
+    
 // Select the required size in filter
     await t.click(page.selectSizeOption);
     await t.click(page.selectSize);
@@ -62,7 +62,7 @@ test('Should check the checkout process for random item', async t => {
     await t.typeText(page.voucherInput, "NotAvailable");
     await t.click(page.submitVoucher);
 
-// Check whether error is displayed if redeem code is not the correct one
+// Check whether error is displayed when wrong voucher code is entered
     await t.expect('[class="voucher-errors clearfix"]').ok('true');
 
 // Closing the error window
@@ -71,14 +71,14 @@ test('Should check the checkout process for random item', async t => {
 // Confirming the purchase and proceed towards checkout
     await t.click(page.goToCheckout);
 
-// User is redirected to login page or create a new account page before moving to payment section
+// Check whether User is redirected to login page or create a new account page before moving to payment section
     const getLocation = ClientFunction(() => document.location.href);
     await t.expect(getLocation()).contains('https://www.bergfreunde.eu/customer/');
 
-// Check whether login form is visible in page    
+// Check whether login form is visible in redirected page    
     await t.expect(Selector('[class="small-12 columns content"]').visible).ok();
 
-// check whether create an account button is visible 
+// check whether create an account button is visible in redirected page
     await t.expect(Selector('[class="a-button a-button--green right a-button--large user-button"][data-codecept="registerButton"]').visible).ok();
 
     });
