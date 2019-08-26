@@ -5,7 +5,7 @@ import Page from './page-model';
 const page = new Page();
 
 fixture('E2E test case for checkout process')
-.page('https://www.bergfreunde.eu');
+.page('https://www.bergfreunde.eu'); //opening the webpage
 
 test('Should check the checkout process for random selected item', async t => {
 
