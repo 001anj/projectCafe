@@ -21,7 +21,7 @@ test('Should check the checkout process for random selected item', async t => {
     await t.click(page.selectRating);
     await t.click(page.submitRating);
 // check whether rating is selected or not
-    await t.expect('[class="clearfix selected"][data-filter-value="5"]').ok();
+    await t.expect(page.successfulRatingSelection).ok();
 
 // Put the required maximum weight in filter
     await t.click(page.selectWeightOption);
@@ -45,13 +45,13 @@ test('Should check the checkout process for random selected item', async t => {
     await t.click(page.selectColor);
     await t.click(page.submitColor);
 // check whether color option is selected or not
-    await t.expect('[class="selected"][data-filter-value="red"]').ok();
+    await t.expect(page.successfulColorSelection).ok();
 
 // Selecting the item after confirming all the required filters    
     await t.click(page.selectItem);
 
 // Check whether detail page of selected item is displayed or not
-    await t.expect('[id="details"]').ok();
+    await t.expect(page.productDetailPage).ok();
 // Check whether return policy is mentioned for selected item
     await t.expect(Selector('html').textContent).contains('30 days returns policy');
 
@@ -72,7 +72,7 @@ test('Should check the checkout process for random selected item', async t => {
     await t.click(page.submitVoucher);
 
 // Check whether error is displayed when wrong voucher code is entered
-    await t.expect('[class="voucher-errors clearfix"]').ok('true');
+    await t.expect(page.errorPopup).ok('true');
 
 // Closing the error window
     await t.click(page.closeErrorPopup);
