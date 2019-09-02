@@ -1,4 +1,4 @@
-# projectCafe
+# projectCafe (CircleCI and Jenkins)
 ## E2E checkout process test case for bergfreunde
  
 ### Steps for running the test case 
