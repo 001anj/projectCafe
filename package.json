@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "testcafe chrome:headless Tests/**/* -e --reporter allure"
+    "test": "testcafe chrome:headless Tests/**/* -e"
   },
   "author": "Anjo Mathew",
   "license": "ISC"
