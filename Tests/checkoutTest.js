@@ -9,7 +9,7 @@ fixture('E2E test case for checkout process')
 
 test('Should check the checkout process for random selected item', async t => {
 
-    await t.click('[class="greeting-cancel"][title="Ich komme gar nicht aus Deutschland"]');
+    // await t.click('[class="greeting-cancel"][title="Ich komme gar nicht aus Deutschland"]');
 
 // Selecting the search field and searching for specific brand "Lundhags"
     await t.click(page.search); 
